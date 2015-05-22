@@ -10,4 +10,16 @@ class User < ActiveRecord::Base
   # i think since the migration file has
   # add_index :conversations, :sender_id, maybe this is the connection
 
-end
+
+
+    after_create :create_default_conversation
+
+
+    private
+
+    # for demo purposes
+
+    def create_default_conversation
+      Conversation.create(sender_id: 1, recipient_id: self.id) unless self.id == 1
+    end
+  end
