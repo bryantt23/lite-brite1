@@ -15,22 +15,48 @@
 //= require turbolinks
 //= require_tree .
 
-var rows = 8;
-var columns = 8;
+// http://jsfiddle.net/arunpjohny/ffxjkq2p/
+// set number rows and columns
+var rows = 4;
+var columns = 4;
+
+// this function adds a div to the row class?
 var $row = $("<div />", {
-    class: 'row'
-});
-var $square = $("<div />", {
-    class: 'square'
+  class: 'row'
 });
 
-$(document).ready(function () {
-    //add columns to the the temp row object
-    for (var i = 0; i < columns; i++) {
-        $row.append($square.clone());
-    }
-    //clone the temp row object with the columns to the wrapper
-    for (var i = 0; i < rows; i++) {
-        $("#wrapper").append($row.clone());
-    }
+// this function adds a div to the square class?
+var $square = $("<div />", {
+  class: 'square'
 });
+
+$(function () {
+  //add columns to the the temp row object
+  for (var i = 0; i < columns; i++) {
+    $row.append($square.clone());
+  }
+
+  //clone the temp row object with the columns to the wrapper
+  for (var i = 0; i < rows; i++) {
+    $("#wrapper").append($row.clone());
+  }
+
+
+  $(".square").on("click", function() {
+      $(this).css("background", "red");
+  })
+});
+
+
+  // $('square').hover(function(){
+  //     $('square').css("background-color", "yellow");
+  //     }, function(){
+  //     $('square').css("background-color", "pink");
+  // });
+
+
+// $("square").hover(function(){
+//     $("square").css("background-color", "yellow");
+//     }, function(){
+//     $("square").css("background-color", "pink");
+// });
